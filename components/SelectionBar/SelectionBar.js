@@ -75,6 +75,7 @@ export default function SelectionBar() {
   const [selectedResource, setSelectedResource] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [searchInputText, setSearchInputText] = useState(null);
+  const [selectHelpOption, setSelectHelpOption] = useState("available");
 
   useEffect(() => {
     setSelectedLocation(null);
@@ -266,12 +267,35 @@ export default function SelectionBar() {
             })}
           </div>
         </div>
+        <div className="mt-5">
+          <p>Select any one:</p>
+          <div className="btn mt-3">
+            <button
+              onClick={() => setSelectHelpOption("available")}
+              className={`border p-2 cursor-pointer rounded-lg  transition duration-150 mr-2 ${
+                selectHelpOption === "available"
+                  ? "bg-green-500 text-white"
+                  : ""
+              }`}
+            >
+              Get Help
+            </button>
+            <button
+              onClick={() => setSelectHelpOption("help")}
+              className={`border p-2 cursor-pointer rounded-lg  ${
+                selectHelpOption === "help" ? "bg-green-500 text-white" : ""
+              }`}
+            >
+              Help Others
+            </button>
+          </div>
+        </div>
         {selectedLocation != null && selectedResource != null ? (
           <div className="showResult flex  w-max items-center mt-5">
             <button
               onClick={() =>
                 router.push(
-                  `/results?location=${selectedLocation}&resource=${selectedResource}`
+                  `/results?location=${selectedLocation}&resource=${selectedResource}&helpOption=${selectHelpOption}`
                 )
               }
               className="border p-2 cursor-pointer rounded-lg bg-green-500 text-white"

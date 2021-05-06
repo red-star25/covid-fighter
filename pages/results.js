@@ -10,8 +10,9 @@ export default function Results() {
   const router = useRouter();
   const { location } = router.query;
   const { resource } = router.query;
+  const { helpOption } = router.query;
   const { data, error } = useSwr(
-    `/api/getData?location=${location}&resource=${resource}`,
+    `/api/getData?location=${location}&resource=${resource}&helpOption=${helpOption}`,
     fetcher
   );
 
