@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   await cors(req, res);
   // Rest of the API logic
   var response = await fetch(
-    `https://api.twitter.com/1.1/search/tweets.json?q=${req.query.location} ${req.query.resource} ${req.query.helpOption}&count=20&tweet_mode=extended&expansion=${expansion}&media_fields=${media_fields}`,
+    `https://api.twitter.com/1.1/search/tweets.json?q=${req.query.location} ${req.query.resource} ${req.query.helpOption}&count=100&tweet_mode=extended&expansion=${expansion}&media_fields=${media_fields}`,
     {
       method: "get",
       headers: {
