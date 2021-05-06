@@ -15,7 +15,12 @@ export default function Results() {
     fetcher
   );
 
-  if (error) return <div>Failed to load data</div>;
+  if (error)
+    return (
+      <center>
+        <div>Failed to load data</div>
+      </center>
+    );
   if (!data)
     return (
       <center>
