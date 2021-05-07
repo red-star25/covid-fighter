@@ -99,9 +99,11 @@ export default function Results() {
                 {tweet.is_quote_status ? (
                   <div className="grid grid-cols-3 gap-x-3 gap-y-3">
                     {"quoted_status" in tweet
-                      ? tweet.quoted_status.entities.media.map((media) => {
-                          return <img src={media.media_url} alt="" />;
-                        })
+                      ? "media" in tweet.quoted_status.entities
+                        ? tweet.quoted_status.entities.media.map((media) => {
+                            return <img src={media.media_url} alt="" />;
+                          })
+                        : ""
                       : ""}
                   </div>
                 ) : (
